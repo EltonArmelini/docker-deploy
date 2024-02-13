@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3'
 
 services:
   app:
@@ -7,16 +7,14 @@ services:
       - 80:5173
     volumes:
       - ./frontend/src:/app/src
-    environment:
-      VITE_API_URL: http://170.64.171.185:3000
-  api:
+  api: 
     build: ./backend
     ports:
       - 3000:3000
     environment:
-      DB_URL: mongodb://db/gamify
+      - DB_URL=mongobd//bd/gamify
     volumes:
-      - ./backend/app:/app/app
+      - ./backend/:/app
     depends_on:
       - db
   db:
@@ -25,6 +23,5 @@ services:
       - 27017:27017
     volumes:
       - gamify:/data/db
-
 volumes:
-  gamify:
+  gamify: 
